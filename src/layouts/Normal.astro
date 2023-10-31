@@ -1,0 +1,95 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import Button from "../components/Button.astro";
+import Base from "./Base.astro";
+---
+
+<Base title={title}>
+  <a style="position: absolute; bottom: 0px;" href="/bitte-komm-zurueck">
+    <img style="width: 300px;" src="/Omori Website 1.gif" />
+  </a>
+  <header>
+    <nav style="display: flex;">
+      <Button href="/screenshots">screenshots</Button>
+      <Button href="/geschichte">geschichte</Button>
+      <a class="logo" href="/"
+        ><h1 style="margin-top: -1rem">OMORI</h1><span
+          style="margin-top: -0.7rem">- Deutsch Mod -</span
+        ></a
+      >
+      <Button href="/frequently-asked-questions">faq</Button>
+      <Button href="/about">über das projekt</Button>
+    </nav>
+  </header>
+  <slot />
+  <footer>
+    <nav>
+      <a href="https://youtube.com">
+        <img src="/youtube.png" />
+      </a>
+      <a href="https://discord.com">
+        <img src="/discord.png" />
+      </a>
+      <a href="https://twitter.com/OMORI_GERMAN">
+        <img src="/twitter.png" />
+      </a>
+      <a href="https://mods.one/">
+        <img src="/mods-dot-one.png" />
+      </a>
+    </nav>
+  </footer>
+</Base>
+
+<style is:global>
+  h1 {
+    font-weight: normal;
+    margin: 0;
+    font-size: 3rem;
+  }
+
+  header > nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 0.1rem solid white;
+    padding: 0.5rem;
+  }
+
+  footer > nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    border-top: 0.1rem solid white;
+    background: black;
+    display: flex;
+    justify-content: flex-end;
+    /* padding: 10px; */
+    z-index: 1;
+    gap: 1rem;
+  }
+
+  footer > nav img {
+    width: 100px;
+  }
+
+  .logo {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* damit der content über dem laptop liegt */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+</style>

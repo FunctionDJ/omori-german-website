@@ -1,0 +1,64 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const cssClass = Astro.url.pathname.startsWith(href) ? "active" : "";
+---
+
+<a href={href} class={cssClass}><slot /></a>
+
+<style>
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0.3rem;
+    border: 0.1rem solid white;
+    font-family: omori-crooked;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  a:hover::before,
+  a:hover::after {
+    width: 2rem;
+    height: 1rem;
+    position: absolute;
+    content: "";
+    background-image: url("/redhand.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  a:hover::before {
+    left: -0.3rem;
+    transform: translateX(-100%);
+  }
+
+  a:hover::after {
+    right: -0.3rem;
+    transform: translateX(100%) scaleX(-1);
+  }
+
+  .active {
+    background-color: white;
+    color: black;
+    outline: 0.08rem solid white;
+    border: 0.1rem solid black;
+  }
+
+  .active::before {
+    width: 2rem;
+    height: 1rem;
+    position: absolute;
+    content: "";
+    background-image: url("/redhand.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: -0.3rem;
+    transform: translateX(-100%);
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Normal from "../layouts/Normal.astro";
+---
+
+<Normal title="Screenshots">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <img class="swiper-slide" src="/dUwwWqB.png" />
+      <img class="swiper-slide" src="/dUwwWqB.png" />
+      <img class="swiper-slide" src="/dUwwWqB.png" />
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <script type="module">
+    import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+    const swiper = new Swiper(".swiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+</Normal>
+
+<style is:global>
+  .swiper {
+    width: 600px;
+    height: 300px;
+    margin: 1rem;
+  }
+
+  .swiper img {
+    object-fit: contain;
+  }
+</style>

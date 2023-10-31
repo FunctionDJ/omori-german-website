@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="description" content="Astro description" /> -->
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    font-family: omori-normal;
+    font-size: 24px;
+    color: white;
+  }
+
+  html {
+    background: black;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  @font-face {
+    font-family: omori-crooked;
+    src: url("OMORI_GAME.ttf");
+  }
+
+  @font-face {
+    font-family: omori-normal;
+    src: url("OMORI_GAME2.ttf");
+  }
+</style>
