@@ -1,0 +1,139 @@
+---
+import Button from "./Button.astro";
+---
+
+<header>
+  <div class="bar">
+    <a class="logo mobile-only" href="/">
+      <h1 style="margin-top: -1rem">OMORI</h1><span style="margin-top: -0.7rem"
+        >- Deutsch Mod -</span
+      ></a
+    >
+
+    <button class="burger-menu mobile-only" onclick="
+    toggleMenu()
+    "
+    ></button>
+  </div>
+  <nav>
+    <Button href="/screenshots">screenshots</Button>
+    <Button href="/geschichte">geschichte</Button>
+    <a class="logo desktop-only" href="/"
+      ><h1 style="margin-top: -1rem">OMORI</h1><span style="margin-top: -0.7rem"
+        >- Deutsch Mod -</span
+      ></a
+    >
+    <Button href="/frequently-asked-questions">faq</Button>
+    <Button href="/about">über das projekt</Button>
+  </nav>
+</header>
+<style is:global>
+  h1 {
+    font-weight: normal;
+    margin: 0;
+    font-size: 3rem;
+  }
+
+  header {
+    border-bottom: 0.1rem solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bar {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    position: relative;
+  }
+
+  .burger-menu {
+    position: absolute;
+    /* float: right; */
+    right: 0.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 20px solid red;
+    /* margin-right: 0; */
+    border: none;
+    background-color: transparent;
+    background-image: url("/burger.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: min(15vw, 50px);
+    height: min(15vw, 50px);
+  }
+
+  .burger-menu.active {
+    filter: invert();
+  }
+
+  nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-evenly;
+    max-width: 1000px;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .logo {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 799.99px) {
+    nav > * {
+      width: min(300px, 100%);
+      text-align: center;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    header {
+      flex-direction: row;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .hide-on-mobile {
+      display: inherit;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    .logo.desktop-only {
+      display: block;
+    }
+  }
+</style>
+
+<script is:inline>
+const headerNav = document.querySelector("header nav");
+const burgerMenu = document.querySelector(".burger-menu");
+
+function toggleMenu() {
+  const isHidden = headerNav.classList.contains("hide-on-mobile");
+  headerNav.classList.toggle("hide-on-mobile", !isHidden);
+  burgerMenu.classList.toggle("active", isHidden);
+}
+</script>
